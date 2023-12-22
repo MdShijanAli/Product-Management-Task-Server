@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Product 1",
+    "description": "lorem10fljdbgbejgnvsmfdgvobjew",
+    "price": 500,
+    "color": ["blue", "green", "yellow", "black"],
+    "size": ["xl","L", "M", "S"],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/6/65/Product_Photography.jpg",
+    "stock": 150
+  },
+  {
+    "title": "Product 1",
+    "description": "lorem10fljdbgbejgnvsmfdgvobjew",
+    "price": 500,
+    "color": ["blue", "green", "yellow", "black"],
+    "size": ["xl","L", "M", "S"],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/6/65/Product_Photography.jpg",
+    "stock": 150
+  },
+  {
+    "title": "Product 1",
+    "description": "lorem10fljdbgbejgnvsmfdgvobjew",
+    "price": 500,
+    "color": ["blue", "green", "yellow", "black"],
+    "size": ["xl","L", "M", "S"],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/6/65/Product_Photography.jpg",
+    "stock": 150
+  },
+  {
+    "title": "Product 1",
+    "description": "lorem10fljdbgbejgnvsmfdgvobjew",
+    "price": 500,
+    "color": ["blue", "green", "yellow", "black"],
+    "size": ["xl","L", "M", "S"],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/6/65/Product_Photography.jpg",
+    "stock": 150
+  },
+  {
+    "title": "Product 1",
+    "description": "lorem10fljdbgbejgnvsmfdgvobjew",
+    "price": 500,
+    "color": ["blue", "green", "yellow", "black"],
+    "size": ["xl","L", "M", "S"],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/6/65/Product_Photography.jpg",
+    "stock": 150
+  },
+  {
+    "title": "Product 1",
+    "description": "lorem10fljdbgbejgnvsmfdgvobjew",
+    "price": 500,
+    "color": ["blue", "green", "yellow", "black"],
+    "size": ["xl","L", "M", "S"],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/6/65/Product_Photography.jpg",
+    "stock": 150
+  }
+]
