@@ -6,11 +6,6 @@ const port = process.env.PORT || 5000;
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-
-const secretKey = crypto.randomBytes(32).toString('hex');
-
 
 
 
@@ -31,6 +26,7 @@ async function run() {
   try {
       const productsCollection = client.db("productTaskDB").collection("products");
       const usersCollection = client.db("productTaskDB").collection("users");
+      const cartProductsCollection = client.db("productTaskDB").collection("carts");
  
 
     
@@ -63,17 +59,38 @@ async function run() {
       try {
         // Attempt to insert the user into the database
         const result = await usersCollection.insertOne(user);
-  
-        // Generate JWT only if user insertion is successful
-        const token = jwt.sign({ userId: result.insertedId, email: user.email }, secretKey, { expiresIn: '1d' });
-  
-        res.json({ token, name: user.name });
+        res.json(result)
       } catch (error) {
         console.error('Error inserting user into the database:', error);
         res.status(500).send('Error creating user');
       }
     });
   });
+    
+    app.get('/api/users', async (req, res) => {
+      const query = {};
+      const result = await usersCollection.find(query).toArray();
+      res.send(result);
+    })
+    
+    // Post CartData
+
+    app.post('/api/cart', async (req, res) => {
+      try {
+        const cartData = req.body;
+        const result = await cartProductsCollection.insertOne(cartData);
+        res.json(result);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    });
+
+    app.get('/api/carts', async (req, res) => {
+      const query = {}
+      const result = await cartProductsCollection.find(query).toArray()
+      res.send(result)
+    })
   
     
 
