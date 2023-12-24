@@ -27,6 +27,7 @@ async function run() {
       const productsCollection = client.db("productTaskDB").collection("products");
       const usersCollection = client.db("productTaskDB").collection("users");
       const cartProductsCollection = client.db("productTaskDB").collection("carts");
+      const ordersCollection = client.db("productTaskDB").collection("orders");
  
 
     
@@ -67,6 +68,34 @@ async function run() {
     });
   });
     
+  app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      // Fetch the user from the database based on the provided email
+      const user = await usersCollection.findOne({ email });
+  
+      if (!user) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+  
+      // Compare the provided password with the hashed password from the database
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+  
+      if (!isPasswordValid) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+  
+      // If the password is valid, you can generate a JWT or set a session to authenticate the user
+      // ...
+  
+      res.status(200).json({ message: 'Login successful' });
+    } catch (error) {
+      console.error('Error during login:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+    
     app.get('/api/users', async (req, res) => {
       const query = {};
       const result = await usersCollection.find(query).toArray();
@@ -89,6 +118,18 @@ async function run() {
     app.get('/api/carts', async (req, res) => {
       const query = {}
       const result = await cartProductsCollection.find(query).toArray()
+      res.send(result)
+    })
+
+    app.post('/api/orders', async (req, res) => {
+      const data = req.body;
+      const result = await ordersCollection.insertMany(data);
+      res.json(result)
+    })
+
+    app.get('/api/orders', async (req, res) => {
+      const query = {};
+      const result = await ordersCollection.find(query).toArray();
       res.send(result)
     })
   
