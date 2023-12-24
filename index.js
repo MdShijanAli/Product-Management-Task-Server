@@ -54,7 +54,7 @@ async function run() {
         return res.status(500).send('Error hashing password');
       }
   
-      // Replace the plain password with the hashed one
+
       user.password = hash;
   
       try {
@@ -86,8 +86,6 @@ async function run() {
         return res.status(401).json({ message: 'Invalid credentials' });
       }
   
-      // If the password is valid, you can generate a JWT or set a session to authenticate the user
-      // ...
   
       res.status(200).json({ message: 'Login successful' });
     } catch (error) {
